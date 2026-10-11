@@ -1,0 +1,17 @@
+name: Elevated 5xx / Error Rate
+match_keywords:
+  - error rate
+  - 5xx
+  - errors.as_count
+  - internal server error
+suggested_actions:
+  - action_type: restart_deployment
+    risk_level: low
+    rationale: >
+      Restarting clears a single bad instance/connection pool if only a
+      subset of pods are erroring.
+  - action_type: rollback_deployment
+    risk_level: high
+    rationale: >
+      If the error rate began immediately after a deploy, rolling back to the
+      previous revision is the fastest reliable mitigation.

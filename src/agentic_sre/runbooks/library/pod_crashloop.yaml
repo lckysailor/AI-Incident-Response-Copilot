@@ -1,0 +1,13 @@
+name: Pod CrashLoopBackOff
+match_keywords:
+  - crashloopbackoff
+  - crash loop
+  - oomkilled
+  - restart_count
+suggested_actions:
+  - action_type: restart_deployment
+    risk_level: low
+    rationale: >
+      A rolling restart clears a crash-looping pod caused by a transient bad
+      state (bad cache, stuck connection pool) without changing capacity or
+      the deployed revision.

@@ -1,0 +1,14 @@
+name: High Latency / Saturation
+match_keywords:
+  - latency
+  - p99
+  - saturation
+  - throttl
+suggested_actions:
+  - action_type: scale_deployment
+    risk_level: medium
+    params:
+      replicas: 6
+    rationale: >
+      Elevated p99 latency correlated with high request volume suggests the
+      deployment is under-provisioned; scaling out relieves per-pod load.
